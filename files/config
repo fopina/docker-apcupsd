@@ -1,0 +1,1 @@
+export APCUPSD_MAIL="/etc/apcupsd/mymail"
