@@ -1,3 +1,11 @@
 #!/bin/sh
 
-curl -d "$*" http://pushit_web/
+payload=$()
+
+if [ -n "${WEBHOOK_URL}" ]; then
+    confgen /etc/apcupsd/webhook.tmpl | curl -d @- "${WEBHOOK_URL}"
+else
+    echo "WARN: WEBHOOK_URL not defined, sending notification to stdout"
+    echo
+    confgen /etc/apcupsd/webhook.tmpl
+fi
