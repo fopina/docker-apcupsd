@@ -3,7 +3,7 @@ name: publish to dockerhub
 on:
     push:
       branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -25,8 +25,8 @@ jobs:
         run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64,linux/arm/v7 \
-            --build-arg VERSION=3.14.14.2 \
+            --build-arg VERSION=3.14.14.3 \
             --push \
-            -t fopina/apcupsd:3.14.14.2 \
+            -t fopina/apcupsd:3.14.14.3 \
             -t fopina/apcupsd:latest \
             .
